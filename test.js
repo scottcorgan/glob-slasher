@@ -54,3 +54,10 @@ test('prefixes with slash when glob uses negation', function (t) {
   t.deepEqual(slasher(obj), {'!/**/something': '/value'}, 'added slash');
   t.end();
 });
+
+test('prefixes globs in an array', function (t) {
+  
+  var obj = ['!**/something', '**'];
+  t.deepEqual(slasher(obj), ['!/**/something', '/**'], 'added slash');
+  t.end();
+});

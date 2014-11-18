@@ -12,12 +12,12 @@ module.exports = function globSlasher (spec, options) {
   
   // Arrays
   if (Array.isArray(spec)) {
-    return spec.forEach(defaultMutator);
+    return spec.map(defaultMutator);
   }
   
   // Strings or numbers
   if (!isObject(spec)) {
-    return globSlash.normalize(spec.toString());
+    return globSlash(spec.toString());
   }
   
   // Objects
@@ -28,7 +28,7 @@ module.exports = function globSlasher (spec, options) {
         return value;
       }
       
-      return globSlash.normalize(value);
+      return globSlash(value);
     },
     keyMutator: function (key) {
       
@@ -47,7 +47,7 @@ function defaultMutator (value) {
     return value;
   }
   
-  return globSlash.normalize(value);
+  return globSlash(value);
 }
 
 function isValidValueType (value) {
