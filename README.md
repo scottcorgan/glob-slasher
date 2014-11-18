@@ -10,18 +10,29 @@ npm install glob-slasher --save
 
 ## Usage
 
+Strings
+
 ```js
 var slasher = require('glob-slasher');
 
-// Strings
 var pathname = '!**/something';
 console.log(slasher(pathname)); // OUTPUTS: '!/**/something'
+```
 
-// Arrays
+Arrays
+
+```js
+var slasher = require('glob-slasher');
+
 var globs = ['!**/something', '/here'];
 console.log(slasher(globs)); // OUTPUTS: ['!/**/something', '/here']
+```
 
-// Objects
+Objects
+
+```js
+var slasher = require('glob-slasher');
+
 var globs = {
   '**/some/route': 'index.html'
 };
@@ -29,7 +40,7 @@ console.log(slasher(globs));
 
 // OUTPUTS:
 {
-  '/**?some/route': '/index.html'
+  '/**/some/route': '/index.html'
 }
 ```
 
